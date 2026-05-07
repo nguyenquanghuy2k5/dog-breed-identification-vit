@@ -1,6 +1,24 @@
+# 1. Thư mục chứa Model và Cơ sở dữ liệu Vector (Rất nặng)
 models/
-__pycache__/
+
+# 2. Thư mục chứa Dataset gốc (Chứa hàng vạn ảnh)
 Cub_200_2011/
 Stanford_dogs/
 cifar-100-python/
+
+# 3. Môi trường ảo Python (Chứa hàng GB thư viện)
 venv/
+env/
+
+# 4. Các tệp trọng số và mảng dữ liệu lẻ (Đề phòng lọt ra ngoài)
+*.pt
+*.pth
+*.h5
+*.index
+*.npy
+
+# 5. Rác hệ thống và cấu hình phần mềm gõ code (Không cần thiết)
+__pycache__/
+.vscode/
+.idea/
+*.log
