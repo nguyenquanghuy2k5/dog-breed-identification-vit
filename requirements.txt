@@ -1,0 +1,12 @@
+torch
+torchvision
+transformers
+datasets
+accelerate
+scikit-learn
+streamlit
+pillow
+scipy
+matplotlib
+tqdm
+

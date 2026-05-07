@@ -1,0 +1,6 @@
+models/
+__pycache__/
+Cub_200_2011/
+Stanford_dogs/
+cifar-100-python/
+venv/
