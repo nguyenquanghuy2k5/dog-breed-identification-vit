@@ -32,3 +32,10 @@ wandb/
 
 # Checkpoint của Jupyter Notebook / Google Colab
 .ipynb_checkpoints/
+
+# MCP & Secrets
+.agents/
+
+# Node dependencies
+node_modules/
+frontend/node_modules/

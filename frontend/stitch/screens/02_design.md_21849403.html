@@ -1,0 +1,213 @@
+---
+name: Breed Lens
+colors:
+  surface: "#f9f9ff"
+  surface-dim: "#d3daea"
+  surface-bright: "#f9f9ff"
+  surface-container-lowest: "#ffffff"
+  surface-container-low: "#f0f3ff"
+  surface-container: "#e7eefe"
+  surface-container-high: "#e2e8f8"
+  surface-container-highest: "#dce2f3"
+  on-surface: "#151c27"
+  on-surface-variant: "#534434"
+  inverse-surface: "#2a313d"
+  inverse-on-surface: "#ebf1ff"
+  outline: "#867461"
+  outline-variant: "#d8c3ad"
+  surface-tint: "#855300"
+  primary: "#855300"
+  on-primary: "#ffffff"
+  primary-container: "#f59e0b"
+  on-primary-container: "#613b00"
+  inverse-primary: "#ffb95f"
+  secondary: "#0058be"
+  on-secondary: "#ffffff"
+  secondary-container: "#2170e4"
+  on-secondary-container: "#fefcff"
+  tertiary: "#00658b"
+  on-tertiary: "#ffffff"
+  tertiary-container: "#1abdff"
+  on-tertiary-container: "#004966"
+  error: "#ba1a1a"
+  on-error: "#ffffff"
+  error-container: "#ffdad6"
+  on-error-container: "#93000a"
+  primary-fixed: "#ffddb8"
+  primary-fixed-dim: "#ffb95f"
+  on-primary-fixed: "#2a1700"
+  on-primary-fixed-variant: "#653e00"
+  secondary-fixed: "#d8e2ff"
+  secondary-fixed-dim: "#adc6ff"
+  on-secondary-fixed: "#001a42"
+  on-secondary-fixed-variant: "#004395"
+  tertiary-fixed: "#c5e7ff"
+  tertiary-fixed-dim: "#7fd0ff"
+  on-tertiary-fixed: "#001e2d"
+  on-tertiary-fixed-variant: "#004c6a"
+  background: "#f9f9ff"
+  on-background: "#151c27"
+  surface-variant: "#dce2f3"
+typography:
+  display:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 44px
+    fontWeight: "800"
+    lineHeight: 52px
+    letterSpacing: -0.02em
+  headline-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 32px
+    fontWeight: "700"
+    lineHeight: 40px
+    letterSpacing: -0.01em
+  headline-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 24px
+    fontWeight: "700"
+    lineHeight: 32px
+  title-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 20px
+    fontWeight: "600"
+    lineHeight: 28px
+  body-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: "400"
+    lineHeight: 28px
+  body-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 16px
+    fontWeight: "400"
+    lineHeight: 24px
+  label-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 14px
+    fontWeight: "600"
+    lineHeight: 20px
+    letterSpacing: 0.01em
+  label-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 12px
+    fontWeight: "500"
+    lineHeight: 16px
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  base: 8px
+  xs: 4px
+  sm: 12px
+  md: 24px
+  lg: 40px
+  xl: 64px
+  gutter: 16px
+  margin: 24px
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    padding: "{spacing.md}"
+  button-primary-hover:
+    backgroundColor: "{colors.primary-container}"
+    textColor: "{colors.on-primary-container}"
+  button-secondary:
+    backgroundColor: "{colors.secondary}"
+    textColor: "{colors.on-secondary}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    padding: "{spacing.md}"
+  button-secondary-hover:
+    backgroundColor: "{colors.secondary-container}"
+    textColor: "{colors.on-secondary-container}"
+  card-breed-result:
+    backgroundColor: "{colors.surface-container-lowest}"
+    rounded: "{rounded.xl}"
+    padding: "{spacing.md}"
+  image-upload-zone:
+    backgroundColor: "{colors.surface-container-low}"
+    borderColor: "{colors.outline-variant}"
+    borderStyle: "dashed"
+    rounded: "{rounded.xl}"
+    padding: "{spacing.lg}"
+  confidence-bar:
+    backgroundColor: "{colors.secondary-container}"
+    textColor: "{colors.on-secondary-container}"
+    rounded: "{rounded.full}"
+    padding: "{spacing.xs}"
+  breed-trait-tag:
+    backgroundColor: "{colors.tertiary-container}"
+    textColor: "{colors.on-tertiary-container}"
+    typography: "{typography.label-sm}"
+    rounded: "{rounded.full}"
+    padding: "{spacing.xs}"
+---
+
+## Brand & Style
+
+The design system is built to evoke the excitement of discovering pet breeds balanced with the reliability and precision of advanced AI technology. The brand personality is smart, trustworthy, and friendly.
+
+The chosen style is **Modern Tech** with a human-centric twist. It utilizes clean layouts, prominent image areas, and significant whitespace to keep the focus on the uploaded photos and AI results. The interface feels light and intuitive, using soft shadows and tonal shifts to create a welcoming, "best-in-class" digital environment for pet lovers.
+
+## Colors
+
+The palette centers on "Golden Retriever" orange to drive action (like uploading an image) and signal energy. This is balanced by "AI Tech" blue, which provides a precise, calming counterpoint for data visualization and scan results.
+
+- **Primary:** Use for main actions (Upload button), active states, and highlights.
+- **Secondary:** Use for confidence bars (accuracy percentages), trust indicators, and data visualization.
+- **Neutral:** A range of soft grays used for backgrounds and borders to keep the UI feeling "premium."
+- **Deep Charcoal:** Used for all primary text to ensure high legibility and a grounded, professional feel.
+
+## Typography
+
+This design system utilizes **Plus Jakarta Sans** for its friendly, rounded terminals and exceptional legibility. It maintains a contemporary tech look while feeling approachable for everyday users.
+
+- **Headlines:** Bold weights are used to display the identified dog breed prominently.
+- **Body:** Generous line heights are applied to the body text (like breed descriptions and history) to maintain a premium reading experience.
+- **Labels:** Used for buttons and small metadata (traits, tags), utilizing a medium or semi-bold weight.
+
+## Layout & Spacing
+
+The layout follows a **Fixed Grid** model for mobile-first consistency, focusing on a single-column layout for mobile and split-view (Image on left, Results on right) for desktop.
+
+- **Whitespace:** A "generous" philosophy is applied. Never crowd the upload zone or the results data.
+- **Rhythm:** Spacing is strictly based on an 8px scale.
+- **Containers:** Content should be centered with a maximum width on larger screens to keep the scanning experience focused.
+
+## Elevation & Depth
+
+This design system uses **Ambient Shadows** and **Tonal Layers** to define the interface's verticality.
+
+- **Surfaces:** Main backgrounds use the lightest neutral tint. The `image-upload-zone` and `card-breed-result` sit one level above on a pure white surface.
+- **Shadows:** Shadows are highly diffused and soft (Blur: 20px-40px, Opacity: 4-8%) with a subtle hint of the primary orange or secondary blue mixed into the shadow color.
+- **Interactions:** The upload zone should react to drag-and-drop events with a subtle background color shift.
+
+## Shapes
+
+The shape language is defined by **Rounded** corners, mirroring the soft features of a pet and making the app feel safe and friendly, contrasting with typical "cold" AI interfaces.
+
+- **Upload Zone:** Uses a `1.5rem` (rounded-xl) radius with a dashed border to clearly indicate interactivity.
+- **Cards:** Breed result cards use a `1.5rem` (rounded-xl) radius to create a soft, containerized look.
+- **Tags & Bars:** Confidence bars and trait tags use a `rounded-full` (pill shape) to neatly encapsulate data.
+- **Buttons:** Main CTA buttons use a `12px` (rounded-lg) radius.
+
+## Components
+
+### Upload & Interactions
+
+The `image-upload-zone` is the primary interactive element on the home page. It features a dashed border (`outline-variant`) and a soft background (`surface-container-low`). Upon hovering or dragging an image, it should transition smoothly to a slightly darker tint.
+
+### Cards & Results
+
+The `card-breed-result` is the hero container for the AI output, utilizing `rounded-xl` and a tinted ambient shadow. Inside this card, use the `confidence-bar` to visually display the AI's certainty percentage (e.g., 95% Golden Retriever) using the secondary blue palette.
+
+### Tags & Metadata
+
+Use `breed-trait-tag` to list characteristics of the identified dog (e.g., "Friendly", "Active", "Sheds heavily"). These utilize the tertiary color palette (`tertiary-container`) to stand out from the main text without competing with the primary action buttons.

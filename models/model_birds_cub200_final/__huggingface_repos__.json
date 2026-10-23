@@ -1,1 +1,0 @@
-{"repos": [{"repoId": "google/vit-base-patch16-224-in21k", "repoType": "model", "commitHash": "b4569560a39a0f1af58e3ddaf17facf20ab919b0", "filePaths": ["preprocessor_config.json", "model.safetensors", "config.json"]}]}

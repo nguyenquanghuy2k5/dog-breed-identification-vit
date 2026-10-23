@@ -255,7 +255,7 @@ def build_database(model_info):
             for i in range(len(labels)):
                 database_records.append({
                     "faiss_id": faiss_id_counter,
-                    "filepath": filepaths[i],
+                    "filepath": str(filepaths[i]).replace("\\", "/"),
                     "class_id": labels[i]
                 })
                 faiss_id_counter += 1

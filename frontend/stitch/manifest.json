@@ -1,0 +1,62 @@
+[
+  {
+    "index": 1,
+    "screen_id": "532b33f6f2374d21bba4d6e844ad6c0e",
+    "title": "Kết Quả Nhận Dạng & Truy Xuất Giống Chó CBIR",
+    "width": "2560",
+    "height": "5878",
+    "device_type": "DESKTOP",
+    "html_file": "screens/01_Kết_Quả_Nhận_Dạng_&_Truy_Xuất_Giống_Chó_CBIR_532b33f6.html",
+    "screenshot_file": "screenshots/01_Kết_Quả_Nhận_Dạng_&_Truy_Xuất_Giống_Chó_CBIR_532b33f6.jpg"
+  },
+  {
+    "index": 2,
+    "screen_id": "2184940398723899600",
+    "title": "design.md",
+    "width": "780",
+    "height": "1768",
+    "device_type": null,
+    "html_file": "screens/02_design.md_21849403.html",
+    "screenshot_file": null
+  },
+  {
+    "index": 3,
+    "screen_id": "930d1d44ac88420da30a12f8513688b6",
+    "title": "Hệ Thống Tra Cứu Ảnh Dựa Vào Nội Dung - Nhận Dạng Giống Chó",
+    "width": "2560",
+    "height": "6974",
+    "device_type": "DESKTOP",
+    "html_file": "screens/03_Hệ_Thống_Tra_Cứu_Ảnh_Dựa_Vào_Nội_Dung_-_Nhận_Dạng_Giống_Chó_930d1d44.html",
+    "screenshot_file": "screenshots/03_Hệ_Thống_Tra_Cứu_Ảnh_Dựa_Vào_Nội_Dung_-_Nhận_Dạng_Giống_Chó_930d1d44.jpg"
+  },
+  {
+    "index": 4,
+    "screen_id": "fbf10059cdd2439e99def1321e9b28f9",
+    "title": "Close up photo of an adorable Golden Retriever looking attentively into the camera, studio portrait, soft warm light, natural clean background",
+    "width": "1024",
+    "height": "1024",
+    "device_type": null,
+    "html_file": null,
+    "screenshot_file": "screenshots/04_Close_up_photo_of_an_adorable_Golden_Retriever_looking_atten_fbf10059.png"
+  },
+  {
+    "index": 5,
+    "screen_id": "419e9a0db76a4e1596998cc80be2cc4e",
+    "title": "Tra Cứu & Tải Ảnh - Nhận Dạng Giống Chó CBIR",
+    "width": "2560",
+    "height": "4540",
+    "device_type": "DESKTOP",
+    "html_file": "screens/05_Tra_Cứu_&_Tải_Ảnh_-_Nhận_Dạng_Giống_Chó_CBIR_419e9a0d.html",
+    "screenshot_file": "screenshots/05_Tra_Cứu_&_Tải_Ảnh_-_Nhận_Dạng_Giống_Chó_CBIR_419e9a0d.jpg"
+  },
+  {
+    "index": 6,
+    "screen_id": "69aff0c713cf4714bf9140e7cc510df9",
+    "title": "Tra Cứu & Tải Ảnh - Nhận Dạng Giống Chó CBIR",
+    "width": "2560",
+    "height": "4626",
+    "device_type": "DESKTOP",
+    "html_file": "screens/06_Tra_Cứu_&_Tải_Ảnh_-_Nhận_Dạng_Giống_Chó_CBIR_69aff0c7.html",
+    "screenshot_file": "screenshots/06_Tra_Cứu_&_Tải_Ảnh_-_Nhận_Dạng_Giống_Chó_CBIR_69aff0c7.png"
+  }
+]

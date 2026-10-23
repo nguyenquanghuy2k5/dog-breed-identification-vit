@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    overscroll-behavior: none;
+    background-color: #f9f9ff;
+    color: #151c27;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f3ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8c3ad;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #867461;
+}
+
+/* Cropper styling overrides to match Stitch theme */
+.cropper-view-box {
+  outline: 2px solid #f59e0b !important;
+  outline-color: rgba(245, 158, 11, 0.9) !important;
+}
+.cropper-line, .cropper-point {
+  background-color: #f59e0b !important;
+}
+.cropper-point.point-se {
+  width: 10px !important;
+  height: 10px !important;
+}
+

@@ -1,0 +1,559 @@
+<!DOCTYPE html><html lang="vi" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Breed Lens - AI Canine Vision Retrieval</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#d8c3ad", "on-secondary": "#ffffff", "error": "#ba1a1a", "tertiary": "#004c6a", "surface-container-lowest": "#ffffff", "secondary-container": "#5b94fd", "on-error": "#ffffff", "on-primary-container": "#ffd09a", "on-background": "#151c27", "on-surface": "#151c27", "tertiary-fixed-dim": "#88cffa", "surface-dim": "#d3daea", "primary-fixed-dim": "#fdb965", "inverse-primary": "#fdb965", "on-primary": "#ffffff", "primary-container": "#f59e0b", "on-tertiary": "#ffffff", "on-secondary-fixed": "#001a42", "inverse-surface": "#2a313c", "surface-container": "#e7eefe", "surface-tint": "#855300", "outline": "#867461", "on-tertiary-container": "#004966", "surface-container-highest": "#dce2f3", "on-secondary-fixed-variant": "#004395", "inverse-on-surface": "#ebf1ff", "surface-bright": "#f9f9ff", "tertiary-container": "#1abdff", "on-primary-fixed-variant": "#653e00", "error-container": "#ffdad6", "surface": "#f9f9ff", "surface-variant": "#dce3f2", "tertiary-fixed": "#c5e7ff", "background": "#f9f9ff", "on-primary-fixed": "#2a1700", "surface-container-high": "#e2e8f8", "on-surface-variant": "#514538", "secondary-fixed": "#d8e2ff", "on-tertiary-fixed": "#001e2d", "on-secondary-container": "#fefcff", "primary-fixed": "#ffddb8", "on-tertiary-fixed-variant": "#004c6a", "secondary": "#085ac0", "surface-container-low": "#f0f3ff", "secondary-fixed-dim": "#adc6ff", "primary": "#653e00", "on-error-container": "#93000a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1.5rem", "space-xl": "4rem", "space-lg": "2.5rem", "space-md": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.75rem", "margin-desktop": "2.5rem", "gutter": "1rem", "gutter-desktop": "1.5rem" }, "fontFamily": { "label-sm": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display": ["Plus Jakarta Sans"], "title-lg": ["Plus Jakarta Sans"], "display-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"] }, "fontSize": { "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "display": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "display-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(21,28,39,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-4"><div class="flex items-center gap-6"><div class="flex items-center gap-3"><img alt="Breed Lens Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI6gOJ8lVC-zbhyGX1AprDvTJR6UlzF2bNY6IlioJCqS9IBhiE8KrcZVvvGY4a7D2XsU_eAIGOjWFloSr5RcnjxezRh-Ta6B3BpubmLDDKa9sO4gnRA3GwF902TJR7nXPqIYNmhBZAbG_YnNzDBxxsFuMiyzDgxu6b6WRzAZSxg21L2E3Jja0dX9NVuYVyiuqEXo-nDXH2b70fPFJqrr7uPMoiAAZxF_RCMSPOXehZwJzsvS5dLoGBIg"><div class="flex flex-col"><span class="font-title-lg text-title-lg tracking-tight text-on-surface font-extrabold">Breed Lens</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">AI Canine Vision Retrieval</span></div></div><div class="hidden xl:flex items-center gap-2 pl-4 py-1 pr-3 rounded-full bg-surface-container-low shadow-[0_2px_8px_rgba(21,28,39,0.03)]"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span></div></div><nav class="hidden lg:flex items-center gap-1" data-active-classes="bg-primary-container text-on-primary-fixed font-bold rounded-lg px-3 py-1.5"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 rounded-lg transition-colors" data-path="cbir-retrieval" href="#">Tra cứu ảnh / CBIR</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 rounded-lg transition-colors" data-path="breed-atlas" href="#">Thư viện giống chó / Breed Atlas</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 rounded-lg transition-colors" data-path="query-history" href="#">Lịch sử truy vấn</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 rounded-lg transition-colors" data-path="model-hub" href="#">Giới thiệu mô hình AI / Model Hub</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-3 py-1.5 rounded-lg transition-colors" data-path="api-docs" href="#">Tài liệu API</a></nav></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-280px)]"><div class="flex flex-col w-full">
+<!-- Top Ambient Glow Decorator -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[900px] h-64 bg-gradient-to-r from-primary-fixed/20 via-secondary-fixed/30 to-tertiary-fixed/20 blur-3xl pointer-events-none -z-10 rounded-full"></div>
+<!-- Main Content Container -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 space-y-10">
+<!-- SECTION 1: Top Query Summary & Meta Header -->
+<section class="flex flex-col gap-6">
+<!-- Navigation & Action bar -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-secondary text-[20px]">arrow_back</span>
+<span class="font-label-md text-label-md font-bold">Quay lại tra cứu ảnh mới</span>
+</a>
+<div class="flex items-center flex-wrap gap-2.5">
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-secondary text-[18px]">download</span>
+<span class="">Xuất PDF / JSON</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-[18px]">scatter_plot</span>
+<span class="">Không gian véc-tơ t-SNE 3D</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-secondary text-on-secondary hover:bg-secondary-container transition-all shadow-[0_4px_16px_-2px_rgba(8,90,192,0.2)] font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+<span class="">Lưu vào Bookmark</span>
+</button>
+</div>
+</div>
+<!-- Query Telemetry Panel (Card Bento) -->
+<div class="w-full bg-surface-container-lowest rounded-2xl p-4 sm:p-6 shadow-[0_8px_30px_-4px_rgba(21,28,39,0.06)] flex flex-col lg:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4 sm:gap-5 w-full lg:w-auto">
+<div class="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-surface-container shadow-md">
+<img class="w-full h-full object-cover" data-alt="High-resolution centered portrait of an alert golden retriever with soft amber sunlight, golden dense fur, dark soulful eyes, and dark nose looking attentively forward into the camera lens with warm indoor background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmxEf-6UKdo47YNw6EApQIG1Aror5acrxQuLk04M1hmT2D08fJPjN3fDnwACqlVinyahf7ngQ6u8uJWT5rfHYgyYPQ6QHcAXHkT-fp8H8G8mH0bd2KEvd2SF1TtfdUK6XteI36MxabyQGMdhyevQkifHzzeoM9CVUizTwJdFeiBHb0hN2HLwJ9kz_FnQVx4RtlEScJA4-5BzgtnLfoWyjhXbSIN9y3itYg9intAeZ4OD0U76dG9VltYw">
+<div class="absolute bottom-1 right-1 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface text-[10px] font-bold px-1.5 py-0.5 rounded-md flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px] text-tertiary-container">crop</span>
+<span class="">QUERY</span>
+</div>
+</div>
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">Ảnh truy vấn đã phân tích</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">ID: #QRY-202505-881</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface truncate font-bold">query_golden_retriever.jpg</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Kích thước ảnh: 1024×1024 px • 24-bit sRGB • Vùng nhận diện chó: 88.4% khung hình</p>
+</div>
+</div>
+<!-- Inference metrics badges -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto shrink-0">
+<div class="bg-surface-container-low p-3 rounded-xl flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Mô hình trích xuất</span>
+<span class="font-label-md text-label-md text-on-surface font-extrabold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">neurology</span>
+<span class="">ViT-B/16</span>
+</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">768-dim Embedding</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Chỉ mục tương đồng</span>
+<span class="font-label-md text-label-md text-on-surface font-extrabold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">hub</span>
+<span class="">Cosine Flat</span>
+</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Exact k-NN search</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Thời gian tính toán</span>
+<span class="font-label-md text-label-md text-primary font-extrabold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-primary">bolt</span>
+<span class="">38.6 ms</span>
+</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Vector Search: 4.2ms</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Tập dữ liệu gốc</span>
+<span class="font-label-md text-label-md text-on-surface font-extrabold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">dataset</span>
+<span class="">Stanford Dogs</span>
+</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">120 giống • 20.5k ảnh</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Top Match Hero Card (#1 Most Confident Match) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">verified</span>
+<span class="font-title-lg text-title-lg font-bold text-on-surface">Định Danh Phù Hợp Cao Nhất (Top Classification)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline">Khoảng cách véc-tơ tối thiểu</span>
+</div>
+<div class="w-full bg-surface-container-lowest rounded-3xl p-6 sm:p-8 shadow-[0_20px_40px_-8px_rgba(0,88,190,0.08)] relative overflow-hidden">
+<!-- Ambient Amber Corner Glow -->
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-primary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Top Badge Ribbon -->
+<div class="flex flex-wrap items-center justify-between gap-3 pb-6">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md font-bold shadow-sm">
+<span class="material-symbols-outlined text-[18px]">trophy</span>
+<span class="">HẠNG #1 - TƯƠNG ĐỒNG CAO NHẤT (TOP MATCH)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">FCI Chuẩn #111</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">AKC Sporting Group</span>
+</div>
+</div>
+<!-- Split Content Grid: Left DB Image & Right Detailed Morphometrics -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left: Reference DB Image Column (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-surface-container shadow-md group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Official museum catalog archival photograph of an adult purebred Scottish Golden Retriever dog with lustrous dense honey-colored coat, symmetrical muzzle, dark eyes, and joyful expression sitting upright in bright studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB2DNWKAVUgKvySg69mImJmHPf8-UcR-wUFY2jdPlzHHu_YbsjLUL2_nFWIf7fs_I0EeZJSr1jbkFFmVj0NIYbWXOZzlnm6jkJOc_qVmiRZW7AtCyMTHPju-Wl_KObIigKEpMW0j7HaGDldChEs9ig0HMo2IYyj5WmgLympprGt5zxZhaUeCpDo0tIBHhgTn6s3ipS_hcHx1XwAkLzD5Dj0Ncmzk7Jj7KyWFMiBNbVjpEsPbs95FOX8g">
+<!-- Bounding Box Annotation Mockup -->
+<div class="absolute inset-8 rounded-xl pointer-events-none bg-secondary/5">
+<div class="absolute top-2 left-2 bg-on-background/90 text-surface font-label-sm text-[11px] px-2 py-0.5 rounded shadow">
+                    canine_head: 0.99
+                  </div>
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary font-label-sm text-[11px] px-2 py-0.5 rounded shadow">
+                    Stanford Reference
+                  </div>
+</div>
+<div class="absolute bottom-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-xl text-on-surface shadow-sm">
+<p class="font-label-sm text-[11px] font-mono text-on-surface-variant">DB Ref: <strong class="text-on-surface">#STAN-GR-0842</strong></p>
+<p class="font-label-sm text-[11px] text-on-surface-variant font-mono truncate max-w-[220px]">stanford_dogs/n02099712_842.jpg</p>
+</div>
+</div>
+<!-- Quick verification action row -->
+<div class="flex items-center justify-between gap-2 p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">compare</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Khớp hình thái mặt</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-secondary">98.2% Phù hợp cấu trúc</span>
+</div>
+</div>
+<!-- Right: Breed Identification & Science Data (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-2">
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface tracking-tight">Golden Retriever</h1>
+<span class="font-headline-md text-headline-md text-primary font-extrabold">96.8% Match</span>
+</div>
+<p class="font-title-lg text-title-lg text-on-surface-variant font-medium">Chó săn mồi lông vàng Anh quốc (Canis lupus familiaris)</p>
+</div>
+<!-- Confidence Progress Bar with Amber Shimmer Accent -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-on-surface-variant font-medium">Chỉ số tin cậy tương quan véc-tơ (Vector Cosine Confidence)</span>
+<span class="font-bold text-secondary">Cực kỳ chắc chắn (Confidence Level: Exceptional)</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden relative">
+<div class="h-full bg-secondary-container rounded-full relative" style="width: 96.8%;">
+<div class="absolute right-0 top-0 bottom-0 w-4 bg-primary-fixed-dim animate-pulse rounded-r-full"></div>
+</div>
+</div>
+</div>
+<!-- Quantitative Vector Metrics Row -->
+<div class="grid grid-cols-3 gap-3 p-3.5 bg-surface-container-low rounded-2xl">
+<div class="text-center">
+<div class="font-label-sm text-label-sm text-on-surface-variant">Cosine Similarity</div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface mt-0.5 font-mono">+0.9682</div>
+<div class="font-label-sm text-[11px] text-secondary font-medium">Góc véc-tơ: 14.5°</div>
+</div>
+<div class="text-center">
+<div class="font-label-sm text-label-sm text-on-surface-variant">Khoảng cách L2 (Euclidean)</div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface mt-0.5 font-mono">0.0318</div>
+<div class="font-label-sm text-[11px] text-tertiary font-medium">Cực hạn phân kỳ</div>
+</div>
+<div class="text-center">
+<div class="font-label-sm text-label-sm text-on-surface-variant">p-value Ý nghĩa</div>
+<div class="font-headline-md text-headline-md font-bold text-primary mt-0.5 font-mono">&lt; 0.001</div>
+<div class="font-label-sm text-[11px] text-on-surface-variant font-medium">Độ lệch chuẩn: 4.8σ</div>
+</div>
+</div>
+<!-- Scientific Morphological Narrative -->
+<div class="space-y-2">
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant font-bold">Nguồn gốc &amp; Đặc trưng hình thái học</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                  Được lai tạo tại Scotland vào thế kỷ 19 bởi Nam tước Tweedmouth để phục vụ săn chim nước. Giống chó sở hữu hộp sọ cân đối, mắt màu nâu hạt dẻ ấm áp, mõm rộng và phẳng. Lớp lông kép đặc trưng màu vàng óng chống thấm nước hoàn hảo, cổ áo lông rậm và phần ngực nở cơ bắp.
+                </p>
+</div>
+<!-- Morphological Trait Badges -->
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Đặc tính trích xuất (Extracted Phenotypes):</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">Thân thiện (Friendly)</span>
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">Thông minh vượt bậc</span>
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">Lông kép chống nước</span>
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">Hộp sọ trung giải (Mesocephalic)</span>
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">Tai gập mềm áp sát má</span>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold">Màu lông: Golden Honey</span>
+</div>
+</div>
+<!-- Hero Actions Bar -->
+<div class="pt-2 flex flex-wrap gap-3">
+<button class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-all font-label-md text-label-md flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">difference</span>
+<span class="">So sánh trực diện (Side-by-side Diff)</span>
+</button>
+<button class="px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">menu_book</span>
+<span class="">Xem hồ sơ chuẩn FCI #111</span>
+</button>
+<button class="px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">photo_library</span>
+<span class="">Khám phá 172 mẫu tương đương</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Results Gallery Grid (Top 2 - Top 5 Candidates) -->
+<section class="space-y-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Các Ứng Viên Tương Đồng Kế Tiếp (Top 2 – Top 5)</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Phân cấp phân nhóm theo khoảng cách không gian embedding gần nhất từ Stanford Dogs Dataset</p>
+</div>
+<!-- View toggles & Filter buttons -->
+<div class="flex items-center gap-2 bg-surface-container-low p-1 rounded-xl">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md font-bold shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">grid_view</span>
+<span class="">Dạng lưới</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">table_rows</span>
+<span class="">Bảng thông số</span>
+</button>
+</div>
+</div>
+<!-- 4-Column Responsive Candidate Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Candidate 1: Rank #2 (Labrador Retriever) -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_8px_30px_-4px_rgba(21,28,39,0.06)] flex flex-col justify-between space-y-4 hover:shadow-xl transition-all">
+<div class="space-y-3">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Yellow Labrador Retriever dog head portrait with smooth short coat, broad skull, gentle expressive hazel eyes, looking ahead in soft natural park daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXTKVkDDZbB6JYXJD76x9OPDO5LfMO7z9HvRQcjKWh1vA8OewAqaE5KJsX2t-iAZOn6vu80H6bEzaV0OI0pZCiuyF22zbLGEvtqqQmE0tNHvkc8vvnSe5vP6duQflhRMwg9x5SUCPfX83YaMDT89W8r92BO4LAavQ8s3nhqIleFhiNDqbMPehz80NEGB4a3awZCeYduEIHOQfhfOB1FKz_Wtr8c9yW1OIchg0cy-sIEcUbrw4Cs6sRaQ">
+<div class="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-sm text-surface font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="">HẠNG #2</span>
+</div>
+<div class="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-extrabold">
+                  88.4%
+                </div>
+</div>
+<div>
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="">AKC Sporting</span>
+<span class="font-mono">#STAN-LR-102</span>
+</div>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface mt-0.5">Labrador Retriever</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Chó tha mồi Labrador (Lông vàng ngắn)</p>
+</div>
+<!-- Confidence metric bar -->
+<div class="space-y-1">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 88.4%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-[11px] text-on-surface-variant font-mono">
+<span class="">Cosine: +0.884</span>
+<span class="">L2 Dist: 0.116</span>
+</div>
+</div>
+<div class="p-2.5 bg-surface-container-low rounded-xl text-on-surface text-xs space-y-1">
+<span class="font-bold text-secondary">Đặc trưng tương đồng:</span>
+<p class="text-on-surface-variant leading-relaxed">Cùng phả hệ Retriever; cấu trúc hộp sọ và vị trí mắt có độ trùng khớp véc-tơ cao.</p>
+</div>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-all text-center">
+                So sánh
+              </button>
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+</button>
+</div>
+</div>
+<!-- Candidate 2: Rank #3 (Nova Scotia Duck Tolling Retriever) -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_8px_30px_-4px_rgba(21,28,39,0.06)] flex flex-col justify-between space-y-4 hover:shadow-xl transition-all">
+<div class="space-y-3">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Nova Scotia Duck Tolling Retriever dog with vibrant red-golden medium coat, alert amber eyes, and white marking on chest in lush green outdoor setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiWoASYDIOYbITORCGmGGVToaoTntHU5GTOj3j6Lp7ERRgUzQC-in4lXFDKNXtusvOu1gtvoZtM5YrEWivipCSmJVIgEV-Ex2VApVdiUCmJMUaTNoKTRlndYysDd3Yfva1AU_SwrboVVJ4734SGmE33zrot9Qlo9N3unqVrLYRl9jeptSEC_cQ4ILhNhWdQIQ29rAGvF7vLgqO7I0RiGTWtJNUK7KWhUhXO-5FpnDAyyiiQ7Ex4RKj3A">
+<div class="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-sm text-surface font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="">HẠNG #3</span>
+</div>
+<div class="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-extrabold">
+                  79.2%
+                </div>
+</div>
+<div>
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="">AKC Sporting</span>
+<span class="font-mono">#STAN-NS-049</span>
+</div>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface mt-0.5 truncate">Nova Scotia Toller</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Chó vịt Nova Scotia (Lông hung đỏ)</p>
+</div>
+<!-- Confidence metric bar -->
+<div class="space-y-1">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary/80 h-full rounded-full" style="width: 79.2%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-[11px] text-on-surface-variant font-mono">
+<span class="">Cosine: +0.792</span>
+<span class="">L2 Dist: 0.208</span>
+</div>
+</div>
+<div class="p-2.5 bg-surface-container-low rounded-xl text-on-surface text-xs space-y-1">
+<span class="font-bold text-tertiary">Đặc trưng tương đồng:</span>
+<p class="text-on-surface-variant leading-relaxed">Màu sắc lông ấm tương đồng, tai cụp tam giác và biểu cảm mắt tập trung tương đương.</p>
+</div>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-all text-center">
+                So sánh
+              </button>
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+</button>
+</div>
+</div>
+<!-- Candidate 3: Rank #4 (Chesapeake Bay Retriever) -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_8px_30px_-4px_rgba(21,28,39,0.06)] flex flex-col justify-between space-y-4 hover:shadow-xl transition-all">
+<div class="space-y-3">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Chesapeake Bay Retriever with thick wavy brownish-deadgrass coat, muscular neck, alert yellow-amber eyes standing outdoors in autumn landscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuHcopfA5y9eE5AHBHmCtQqXyX3jd2YzgEWZ29K9ThSQsxRuOVwZSS5DDrH0goX1ASHKgVm331etNYH861SNXVByeXbjkK4-us55S0Xh4bIEiZ-W_B-MHbKeT6EQmYSKEczIFJkLYSZq0OQavockKi9vI3g0lEl4UPJeNCQa5i8keclGsIq_V4XUeuVOyZ5XZVrMTgmMOrJcnpOR1E_0YNjfFIxq-NpXBAvYpcKrVRKmyUXeb0QAPReA">
+<div class="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-sm text-surface font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="">HẠNG #4</span>
+</div>
+<div class="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-extrabold">
+                  71.6%
+                </div>
+</div>
+<div>
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="">AKC Sporting</span>
+<span class="font-mono">#STAN-CB-318</span>
+</div>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface mt-0.5 truncate">Chesapeake Bay</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Chó săn vịt vịnh Chesapeake</p>
+</div>
+<!-- Confidence metric bar -->
+<div class="space-y-1">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary/70 h-full rounded-full" style="width: 71.6%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-[11px] text-on-surface-variant font-mono">
+<span class="">Cosine: +0.716</span>
+<span class="">L2 Dist: 0.284</span>
+</div>
+</div>
+<div class="p-2.5 bg-surface-container-low rounded-xl text-on-surface text-xs space-y-1">
+<span class="font-bold text-outline">Đặc trưng tương đồng:</span>
+<p class="text-on-surface-variant leading-relaxed">Cấu trúc khuôn mặt gồ gề, kết cấu lông xoăn gợn sóng và khung cơ thể vạm vỡ.</p>
+</div>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-all text-center">
+                So sánh
+              </button>
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+</button>
+</div>
+</div>
+<!-- Candidate 4: Rank #5 (Flat-Coated Retriever) -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_8px_30px_-4px_rgba(21,28,39,0.06)] flex flex-col justify-between space-y-4 hover:shadow-xl transition-all">
+<div class="space-y-3">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Flat-Coated Retriever with smooth lustrous dark coat, long elegant muzzle, warm intelligent eyes, smiling with tongue slightly out in nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNbbTJgXXda-0wgn0b3QDh4Kphc07K2t9sfyjm2EpKuadfZDPB7r_yZJzPfNZHA-0P9bF-HfWJwwKRpmZY8tzEzQ6a9Id4mHks5VCc2PcZcq6lhLp0k1sZx1VlUrxRrLfG8VZZaXBEDKk3QGNvCMVR5iuf-xxz2WLF3IULQHTmEd68T14X_WiJh5fOrepEWkzfBn2cwV2aCjn7HwQ2p_NgHmyVcxHsKPiDBz_cw7VGGq41-GhOc79gyw">
+<div class="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-sm text-surface font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="">HẠNG #5</span>
+</div>
+<div class="absolute top-2 right-2 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-extrabold">
+                  64.5%
+                </div>
+</div>
+<div>
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="">AKC Sporting</span>
+<span class="font-mono">#STAN-FC-091</span>
+</div>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface mt-0.5 truncate">Flat-Coated Retr.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Chó tha mồi lông phẳng</p>
+</div>
+<!-- Confidence metric bar -->
+<div class="space-y-1">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary/50 h-full rounded-full" style="width: 64.5%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-[11px] text-on-surface-variant font-mono">
+<span class="">Cosine: +0.645</span>
+<span class="">L2 Dist: 0.355</span>
+</div>
+</div>
+<div class="p-2.5 bg-surface-container-low rounded-xl text-on-surface text-xs space-y-1">
+<span class="font-bold text-outline">Đặc trưng tương đồng:</span>
+<p class="text-on-surface-variant leading-relaxed">Đường viền trán liền mạch, dáng đứng thanh lịch, khác biệt chủ yếu ở sắc tố lông melanin.</p>
+</div>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-all text-center">
+                So sánh
+              </button>
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: Deep Feature Embedding Breakdown (Morphological Matrix) -->
+<section class="w-full bg-surface-container-lowest rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_-4px_rgba(21,28,39,0.06)] space-y-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[24px]">troubleshoot</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Phân Tích Chi Tiết Vector Đặc Trưng (Deep Feature Embedding Breakdown)</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">So sánh ma trận toán học giữa Ảnh Truy Vấn (Query) và Mẫu Đối Chứng Hạng #1 (Golden Retriever Stanford Ref)</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">Tầng ViT: Block 11 Multi-Head Attention</span>
+</div>
+</div>
+<!-- 4 Comparative Feature Vector Dimension Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Feature 1: Texture & Fur Pattern -->
+<div class="p-4 bg-surface-container-low rounded-2xl space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">1. Kết cấu lông (Texture)</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-[11px] font-bold">97.4%</span>
+</div>
+<p class="font-body-md text-xs text-on-surface-variant">Phân tích tần số không gian Gabor &amp; Patch ViT chỉ ra lông dày kép, độ gợn sóng nhẹ ở vùng ngực và tai hoàn toàn khớp.</p>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-[11px] text-on-surface-variant">
+<span class="">Vector Channel [0:128]</span>
+<span class="font-mono text-secondary font-bold">Δ = 0.026</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 97.4%;"></div>
+</div>
+</div>
+</div>
+<!-- Feature 2: Facial Geometry -->
+<div class="p-4 bg-surface-container-low rounded-2xl space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">2. Hình học sọ (Geometry)</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-[11px] font-bold">96.1%</span>
+</div>
+<p class="font-body-md text-xs text-on-surface-variant">Tỷ lệ mắt - chóp mũi - điểm gập trán (Craniofacial Index: 1.18). Dấu hiệu đặc thù tuyệt đối của chủng Golden Retriever.</p>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-[11px] text-on-surface-variant">
+<span class="">Vector Channel [128:256]</span>
+<span class="font-mono text-secondary font-bold">Δ = 0.039</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 96.1%;"></div>
+</div>
+</div>
+</div>
+<!-- Feature 3: Ear Position & Cranial -->
+<div class="p-4 bg-surface-container-low rounded-2xl space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">3. Khớp tai (Ear Cartilage)</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-[11px] font-bold">95.8%</span>
+</div>
+<p class="font-body-md text-xs text-on-surface-variant">Vị trí điểm gắn tai ngang hàng với khóe mắt ngoài, góc gập xuôi theo xương hàm dưới đặc trưng họ chó săn nước.</p>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-[11px] text-on-surface-variant">
+<span class="">Vector Channel [256:512]</span>
+<span class="font-mono text-secondary font-bold">Δ = 0.042</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 95.8%;"></div>
+</div>
+</div>
+</div>
+<!-- Feature 4: Color Space Histogram -->
+<div class="p-4 bg-surface-container-low rounded-2xl space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">4. Không gian màu (Hue/Sat)</span>
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-[11px] font-bold">98.9%</span>
+</div>
+<p class="font-body-md text-xs text-on-surface-variant">Biểu đồ màu Lab* cho thấy sự phân bố dải màu kem sáng (L*: 74, a*: 12, b*: 41), không phát hiện sắc tố đen/nâu phân nhánh.</p>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-[11px] text-on-surface-variant">
+<span class="">Vector Channel [512:768]</span>
+<span class="font-mono text-primary font-bold">Δ = 0.011</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary-fixed-dim h-full rounded-full" style="width: 98.9%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline SVG Visualization: Feature Vector Radar/Cosine Distance Bar -->
+<div class="p-6 bg-surface-container-low rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="space-y-2 max-w-md">
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">Độ Tương Quan Đa Chiều (Embedding Cross-Attention)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+              Mô hình Transformer đã ánh xạ 196 image patches từ ảnh đầu vào và đạt điểm hội tụ tương đồng tuyệt đối trên 16 attention heads.
+            </p>
+<div class="flex items-center gap-4 text-xs font-mono text-on-surface-variant pt-1">
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-secondary"></span> Query Vector</span>
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-primary-container"></span> Ground Truth (Ref)</span>
+</div>
+</div>
+<!-- Mini Inline Chart SVG -->
+<div class="w-full md:w-80 h-28 flex items-end justify-between gap-2 px-4 py-2 bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-secondary rounded-t-sm" style="height: 85%;"></div>
+<span class="text-[10px] font-mono text-on-surface-variant">Head 1</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-secondary rounded-t-sm" style="height: 94%;"></div>
+<span class="text-[10px] font-mono text-on-surface-variant">Head 4</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-primary-container rounded-t-sm" style="height: 98%;"></div>
+<span class="text-[10px] font-mono text-on-surface-variant">Head 7</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-secondary rounded-t-sm" style="height: 91%;"></div>
+<span class="text-[10px] font-mono text-on-surface-variant">Head 9</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-secondary rounded-t-sm" style="height: 96%;"></div>
+<span class="text-[10px] font-mono text-on-surface-variant">Head 12</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-primary-container rounded-t-sm" style="height: 99%;"></div>
+<span class="text-[10px] font-mono text-on-surface-variant">Head 16</span>
+</div>
+</div>
+</div>
+<!-- Bottom Action CTA Banner -->
+<div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t-0">
+<div class="text-sm text-on-surface-variant">
+            Kết quả được xác minh bởi thuật toán Content-Based Image Retrieval (CBIR) • Stanford Dogs Ontology v2
+          </div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-bold transition-all" type="button">
+              Tải toàn bộ véc-tơ (NPY)
+            </button>
+<a class="px-6 py-2.5 rounded-xl bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-md font-label-md text-label-md font-bold flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">add_photo_alternate</span>
+<span class="">Thực hiện truy vấn với ảnh khác</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_8px_rgba(21,28,39,0.02)] mt-auto"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-12"><div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10"><div class="md:col-span-2 space-y-3"><div class="flex items-center gap-2.5"><span class="font-title-lg text-title-lg text-primary font-bold">Breed Lens Core AI</span><span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">v2.4 Production</span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-lg">Hệ thống trích xuất đặc trưng thị giác máy tính và phân loại giống chó tự động. Tích hợp mạng nơ-ron tích chập ResNet-50 cùng Vision Transformer (ViT) với chỉ mục cosine metric siêu phân giải trên tập Stanford Dogs Dataset.</p><div class="flex flex-wrap gap-2 pt-2"><span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">120 Phân lớp giống</span><span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">2048-dim Vector Embeddings</span><span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Độ trễ truy vấn &lt; 42ms</span></div></div><div class="space-y-3"><h4 class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">Cơ sở tri thức</h4><ul class="space-y-2"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a href="#" class="">Stanford Dogs Dataset Specs</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a href="#" class="">Độ tương đồng Cosine &amp; k-NN</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a href="#" class="">Hệ thống phân loại FCI / AKC</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a href="#" class="">Báo cáo kiểm thử mô hình</a></li></ul></div><div class="space-y-3"><h4 class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">Liên kết nghiên cứu</h4><ul class="space-y-2"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a href="#" class="">Fine-grained Visual Categorization</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a href="#" class="">OpenAPI Schema &amp; Endpoints</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a href="#" class="">Chính sách dữ liệu ảnh trích xuất</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a href="#" class="">Ghi chú phát hành ViT-B/16</a></li></ul></div></div><div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"><p class="font-label-sm text-label-sm text-on-surface-variant">© 2025 Breed Lens Research Lab. Content-Based Dog Breed Image Retrieval &amp; Identification System.</p><div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary-container">memory</span><span class="">ViT &amp; ResNet-50 Pipeline</span></span><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-secondary">hub</span><span class="">Vector Index: 20,580</span></span></div></div></div></footer></body></html>
