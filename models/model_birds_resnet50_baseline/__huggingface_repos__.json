@@ -1,0 +1,1 @@
+{"repos": [{"repoId": "microsoft/resnet-50", "repoType": "model", "commitHash": "34c2154c194f829b11125337b98c8f5f9965ff19", "filePaths": ["model.safetensors", "preprocessor_config.json", "config.json"]}]}

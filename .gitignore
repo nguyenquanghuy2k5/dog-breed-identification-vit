@@ -1,24 +1,34 @@
-# 1. Thư mục chứa Model và Cơ sở dữ liệu Vector (Rất nặng)
-models/
-
-# 2. Thư mục chứa Dataset gốc (Chứa hàng vạn ảnh)
-Cub_200_2011/
-Stanford_dogs/
-cifar-100-python/
-
-# 3. Môi trường ảo Python (Chứa hàng GB thư viện)
+# Môi trường ảo Python
 venv/
+.venv/
 env/
-
-# 4. Các tệp trọng số và mảng dữ liệu lẻ (Đề phòng lọt ra ngoài)
-*.pt
-*.pth
-*.h5
-*.index
-*.npy
-
-# 5. Rác hệ thống và cấu hình phần mềm gõ code (Không cần thiết)
 __pycache__/
-.vscode/
-.idea/
-*.log
+*.pyc
+
+# Bỏ qua tập dữ liệu ảnh (Dataset)
+data/
+datasets/
+Stanford_Dogs/
+CUB_200_2011/
+cifar-100-python/
+*.zip
+*.tar.gz
+
+# Bỏ qua file trọng số mô hình đã train (rất nặng)
+checkpoints/
+weights/
+*.pth
+*.pt
+*.bin
+*.onnx
+*.safetensors
+
+# Bỏ qua kết quả trích xuất vector đặc trưng và logs
+*.npy
+*.pkl
+logs/
+runs/
+wandb/
+
+# Checkpoint của Jupyter Notebook / Google Colab
+.ipynb_checkpoints/
