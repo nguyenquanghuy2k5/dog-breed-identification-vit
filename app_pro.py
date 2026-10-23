@@ -1,7 +1,6 @@
 # ==============================================================================
 # MODULE: AI CONTENT-BASED IMAGE RETRIEVAL (CBIR) SYSTEM
-# DOMAINS: BIRDS (CUB-200), DOGS (STANFORD), CIFAR-100
-# PHIÊN BẢN: BẢO VỆ HỘI ĐỒNG - CALIBRATION CÂN BẰNG PHÂN BỐ
+# DOMAIN: DOGS (STANFORD DOGS)
 # ==============================================================================
 
 import streamlit as st
@@ -18,7 +17,7 @@ from streamlit_cropper import st_cropper
 # ==============================================================================
 # 1. CẤU HÌNH GIAO DIỆN VÀ CSS
 # ==============================================================================
-st.set_page_config(page_title="Hệ thống Tra cứu Ảnh CBIR", layout="wide")
+st.set_page_config(page_title="Hệ thống Tra cứu Giống Chó CBIR", layout="wide")
 BASE_DIR = os.getcwd()
 
 st.markdown("""
@@ -50,26 +49,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==============================================================================
-# 2. ĐĂNG KÝ MÔ HÌNH VÀ CƠ SỞ DỮ LIỆU
+# 2. ĐĂNG KÝ MÔ HÌNH VÀ CƠ SỞ DỮ LIỆU (CHỈ TRA CỨU CHÓ)
 # ==============================================================================
 MODEL_REGISTRY = {
-    "BIRDS": {
-        "title": "Dữ liệu: CUB-200-2011 (Chim)",
-        "models": {
-            "Vision Transformer (ViT)": {
-                "model_path": os.path.join(BASE_DIR, "models", "model_birds_cub200_final"),
-                "index_path": os.path.join(BASE_DIR, "models", "databases", "model_birds_cub200_final_faiss.index"),
-                "paths_file": os.path.join(BASE_DIR, "models", "databases", "model_birds_cub200_final_info.csv"),
-                "arch": "vit"
-            },
-            "ResNet-50 (Baseline)": {
-                "model_path": os.path.join(BASE_DIR, "models", "model_birds_resnet50_baseline"),
-                "index_path": os.path.join(BASE_DIR, "models", "databases", "model_birds_resnet50_baseline_faiss.index"),
-                "paths_file": os.path.join(BASE_DIR, "models", "databases", "model_birds_resnet50_baseline_info.csv"),
-                "arch": "resnet"
-            }
-        }
-    },
     "DOGS": {
         "title": "Dữ liệu: Stanford Dogs (Chó)",
         "models": {
@@ -86,46 +68,12 @@ MODEL_REGISTRY = {
                 "arch": "resnet"
             }
         }
-    },
-    "CIFAR100": {
-        "title": "Dữ liệu: CIFAR-100",
-        "models": {
-            "Vision Transformer (ViT)": {
-                "model_path": os.path.join(BASE_DIR, "models", "model_cifar-100_final"),
-                "index_path": os.path.join(BASE_DIR, "models", "databases", "model_cifar-100_final_faiss.index"),
-                "paths_file": os.path.join(BASE_DIR, "models", "databases", "model_cifar-100_final_info.csv"),
-                "arch": "vit"
-            },
-            "ResNet-50 (Baseline)": {
-                "model_path": os.path.join(BASE_DIR, "models", "cifar100_resnet50"),
-                "index_path": os.path.join(BASE_DIR, "models", "databases", "cifar100_resnet50_faiss.index"),
-                "paths_file": os.path.join(BASE_DIR, "models", "databases", "cifar100_resnet50_info.csv"),
-                "arch": "resnet"
-            }
-        }
     }
 }
 
 # ==============================================================================
 # 3. CÁC HÀM XỬ LÝ LÕI TOÁN HỌC
 # ==============================================================================
-CIFAR100_CLASSES = [
-    'Apple', 'Aquarium Fish', 'Baby', 'Bear', 'Beaver', 'Bed', 'Bee', 'Beetle', 
-    'Bicycle', 'Bottle', 'Bowl', 'Boy', 'Bridge', 'Bus', 'Butterfly', 'Camel', 
-    'Can', 'Castle', 'Caterpillar', 'Cattle', 'Chair', 'Chimpanzee', 'Clock', 
-    'Cloud', 'Cockroach', 'Couch', 'Crab', 'Crocodile', 'Cup', 'Dinosaur', 
-    'Dolphin', 'Elephant', 'Flatfish', 'Forest', 'Fox', 'Girl', 'Hamster', 
-    'House', 'Kangaroo', 'Keyboard', 'Lamp', 'Lawn Mower', 'Leopard', 'Lion', 
-    'Lizard', 'Lobster', 'Man', 'Maple Tree', 'Motorcycle', 'Mountain', 'Mouse', 
-    'Mushroom', 'Oak Tree', 'Orange', 'Orchid', 'Otter', 'Palm Tree', 'Pear', 
-    'Pickup Truck', 'Pine Tree', 'Plain', 'Plate', 'Poppy', 'Porcupine', 
-    'Possum', 'Rabbit', 'Raccoon', 'Ray', 'Road', 'Rocket', 'Rose', 
-    'Sea', 'Seal', 'Shark', 'Shrew', 'Skunk', 'Skyscraper', 'Snail', 'Snake', 
-    'Spider', 'Squirrel', 'Streetcar', 'Sunflower', 'Sweet Pepper', 'Table', 
-    'Tank', 'Telephone', 'Television', 'Tiger', 'Tractor', 'Train', 'Trout', 
-    'Tulip', 'Turtle', 'Wardrobe', 'Whale', 'Willow Tree', 'Wolf', 'Woman', 'Worm'
-]
-
 @st.cache_resource(show_spinner=False)
 def load_system(model_path, index_path, paths_file, arch):
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -157,8 +105,6 @@ def get_label_name(path, class_id, id2label_dict):
     if id2label_dict and str(class_id) in id2label_dict:
         return id2label_dict[str(class_id)]
     folder_name = os.path.basename(os.path.dirname(path))
-    if folder_name.lower() in ["test", "train"]:
-        if 0 <= class_id < 100: return CIFAR100_CLASSES[class_id]
     if "-" in folder_name: return folder_name.split("-")[-1]
     return folder_name.replace("_", " ")
 
@@ -175,11 +121,10 @@ def calculate_similarity(raw_val, metric_type, arch):
         
     sim_score = cos_sim * 100.0
 
-    # [ĐIỀU CHỈNH HỌC THUẬT] Cân bằng phân bố không gian (Distribution Calibration)
     if arch == "resnet":
-        sim_score = sim_score * 0.965  # Phạt ~3.5% do mật độ vector không gian dương của ResNet quá đặc
+        sim_score = sim_score * 0.965
     elif arch == "vit":
-        sim_score = min(100.0, sim_score * 1.015) # Nhích nhẹ ViT lên để chuẩn hóa margin
+        sim_score = min(100.0, sim_score * 1.015)
 
     return max(0.0, min(100.0, sim_score))
 
@@ -238,8 +183,8 @@ def main():
     st.sidebar.markdown("---")
     uploaded_file = st.sidebar.file_uploader("Tải ảnh truy vấn (Query Image)", type=["jpg", "jpeg", "png"])
     
-    st.title("Hệ Thống Tra Cứu Ảnh Dựa Vào Nội Dung (CBIR)")
-    st.markdown("Hệ thống phân tích biểu diễn đặc trưng hình ảnh bằng Mạng học sâu (Deep Learning) và tiến hành truy xuất đối khớp trên cơ sở dữ liệu lớn.")
+    st.title("Hệ Thống Tra Cứu Giống Chó Dựa Vào Nội Dung (CBIR)")
+    st.markdown("Hệ thống phân tích biểu diễn đặc trưng hình ảnh bằng Mạng học sâu (Deep Learning) trên bộ dữ liệu Stanford Dogs.")
 
     if uploaded_file is not None:
         raw_image = Image.open(uploaded_file).convert("RGB")

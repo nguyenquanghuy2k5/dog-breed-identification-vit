@@ -165,12 +165,8 @@ class CIFAR100Dataset(Dataset):
 # ==============================================================================
 
 MODELS_TO_BUILD = [
-    {"model_dir": "models/model_birds_cub200_final", "dataset": "CUB200", "data_root": "Cub_200_2011", "is_vit": True, "base_name": "model_birds_cub200_final"},
-    {"model_dir": "models/model_birds_resnet50_baseline", "dataset": "CUB200", "data_root": "Cub_200_2011", "is_vit": False, "base_name": "model_birds_resnet50_baseline"},
     {"model_dir": "models/model_dogs_stanford_final", "dataset": "Stanford_Dogs", "data_root": "Stanford_dogs", "is_vit": True, "base_name": "model_dogs_stanford_final"},
     {"model_dir": "models/model_dogs_resnet50_baseline", "dataset": "Stanford_Dogs", "data_root": "Stanford_dogs", "is_vit": False, "base_name": "model_dogs_resnet50_baseline"},
-    {"model_dir": "models/model_cifar-100_final", "dataset": "CIFAR-100", "data_root": None, "is_vit": True, "base_name": "model_cifar-100_final"},
-    {"model_dir": "models/cifar100_resnet50", "dataset": "CIFAR-100", "data_root": None, "is_vit": False, "base_name": "cifar100_resnet50"}
 ]
 
 def build_database(model_info):
