@@ -125,15 +125,6 @@ export default function App() {
               <section className="space-y-4 pt-2">
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-2">
                   <div className="space-y-3 max-w-3xl">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-high text-primary text-xs font-bold shadow-sm">
-                      <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-                      <span>Deep Learning CBIR v2.4</span>
-                      <span className="text-outline-variant">•</span>
-                      <span className="text-on-surface-variant font-medium">Stanford Dogs (120 Giống)</span>
-                      <span className="text-outline-variant">•</span>
-                      <span className="text-secondary font-semibold">FAISS Exact Vector Index</span>
-                    </div>
-
                     <h1 className="text-3xl lg:text-4xl font-extrabold text-on-surface tracking-tight">
                       HỆ THỐNG TRA CỨU ẢNH DỰA VÀO NỘI DUNG
                       <span className="block text-primary text-2xl lg:text-3xl font-black mt-1">
