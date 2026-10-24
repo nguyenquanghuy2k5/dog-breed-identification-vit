@@ -1,6 +1,15 @@
 import React, { useRef } from 'react';
 
-export default function Dropzone({ onFileSelected, activeFile, activePreview, onClearFile }) {
+export default function Dropzone({
+  onFileSelected,
+  activeFile,
+  activePreview,
+  onClearFile,
+  onOpenRoiModal,
+  onSubmitRetrieval,
+  isLoading,
+  cropCoords
+}) {
   const fileInputRef = useRef(null);
 
   const handleDragOver = (e) => {
@@ -31,12 +40,14 @@ export default function Dropzone({ onFileSelected, activeFile, activePreview, on
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
   };
 
+  const hasRoi = cropCoords && cropCoords.width > 0 && cropCoords.height > 0;
+
   return (
     <div className="rounded-3xl bg-surface-container-lowest p-6 shadow-sm border border-surface-container-high/40 space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <span className="material-symbols-outlined text-primary text-[22px]">upload_file</span>
-          <h2 className="text-lg text-on-surface font-bold">1. Tải lên ảnh chụp truy vấn</h2>
+          <h2 className="text-lg text-on-surface font-bold">Tải lên ảnh chụp truy vấn</h2>
         </div>
         <span className="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-semibold">
           Query Input
@@ -78,42 +89,90 @@ export default function Dropzone({ onFileSelected, activeFile, activePreview, on
         </div>
       </div>
 
-      {/* Active Ingested File Status Capsule */}
+      {/* Active Ingested File Status Capsule & ROI Shortcuts */}
       {activeFile && (
-        <div className="p-3.5 rounded-2xl bg-surface-container flex items-center justify-between gap-3 shadow-sm border border-surface-container-high">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="w-12 h-12 rounded-xl bg-surface-container-highest overflow-hidden shrink-0 shadow-inner">
-              <img 
-                src={activePreview} 
-                alt="Uploaded thumbnail" 
-                className="w-full h-full object-cover" 
-              />
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-on-surface font-bold truncate max-w-[180px]">
-                  {activeFile.name}
-                </span>
-                <span className="px-2 py-0.5 rounded-full bg-secondary text-on-secondary text-[10px] font-bold shrink-0">
-                  Sẵn sàng
-                </span>
+        <div className="space-y-3 pt-1">
+          <div className="p-3.5 rounded-2xl bg-surface-container flex items-center justify-between gap-3 shadow-sm border border-surface-container-high">
+            <div className="flex items-center gap-3 min-w-0">
+              <div 
+                onClick={onOpenRoiModal}
+                title="Nhấp để mở lại phân vùng ROI"
+                className="w-12 h-12 rounded-xl bg-surface-container-highest overflow-hidden shrink-0 shadow-inner cursor-pointer hover:ring-2 hover:ring-primary transition-all relative group"
+              >
+                <img 
+                  src={activePreview} 
+                  alt="Uploaded thumbnail" 
+                  className="w-full h-full object-cover" 
+                />
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white">
+                  <span className="material-symbols-outlined text-[18px]">crop_free</span>
+                </div>
               </div>
-              <p className="text-[11px] text-on-surface-variant truncate">
-                {formatFileSize(activeFile.size)} • Ảnh RGB
-              </p>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-on-surface font-bold truncate max-w-[160px]">
+                    {activeFile.name}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-secondary text-on-secondary text-[10px] font-bold shrink-0">
+                    Đã tải lên
+                  </span>
+                </div>
+                <p className="text-[11px] text-on-surface-variant truncate">
+                  {formatFileSize(activeFile.size)} • {hasRoi ? `ROI: ${cropCoords.width}x${cropCoords.height}px` : 'Ảnh toàn cảnh'}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={onOpenRoiModal}
+                title="Mở cửa sổ khoanh vùng ROI"
+                className="px-2.5 py-1.5 rounded-xl bg-surface-container-high hover:bg-surface-container text-xs font-semibold text-primary flex items-center gap-1 transition-colors"
+              >
+                <span className="material-symbols-outlined text-[16px]">crop_free</span>
+                <span>{hasRoi ? 'Sửa ROI' : 'Khoanh ROI'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onClearFile}
+                title="Đổi ảnh khác"
+                className="p-1.5 rounded-xl text-on-surface-variant hover:text-error hover:bg-error-container/40 transition-colors"
+              >
+                <span className="material-symbols-outlined text-[18px]">close</span>
+              </button>
             </div>
           </div>
+
+          {/* Quick Submit Button from Section 1 */}
           <button
             type="button"
-            onClick={onClearFile}
-            title="Đổi ảnh khác"
-            className="p-2 rounded-xl text-on-surface-variant hover:text-error hover:bg-error-container/40 transition-colors"
+            disabled={isLoading}
+            onClick={onSubmitRetrieval}
+            className={`w-full py-3 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 ${
+              isLoading
+                ? 'bg-surface-container-highest text-on-surface-variant cursor-not-allowed'
+                : 'bg-primary-container text-on-primary-fixed hover:bg-amber-500 shadow-primary-container/20 active:scale-98'
+            }`}
           >
-            <span className="material-symbols-outlined text-[18px]">close</span>
+            {isLoading ? (
+              <>
+                <svg className="animate-spin h-4 w-4 text-on-primary-fixed" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                </svg>
+                <span>Đang trích xuất vector & đối khớp FAISS...</span>
+              </>
+            ) : (
+              <>
+                <span className="material-symbols-outlined text-[18px]">bolt</span>
+                <span>TIẾN HÀNH TRUY XUẤT NGAY</span>
+              </>
+            )}
           </button>
         </div>
       )}
     </div>
   );
 }
-

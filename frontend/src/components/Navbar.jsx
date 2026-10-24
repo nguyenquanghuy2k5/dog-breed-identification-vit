@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Navbar({ health, activeTab, setActiveTab }) {
+export default function Navbar({ health, activeTab, setActiveTab, isRoiModalOpen }) {
   const isReady = health?.status === 'healthy';
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(21,28,39,0.04)]">
+    <header className={`fixed top-0 w-full z-40 bg-surface/90 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(21,28,39,0.04)] transition-opacity duration-200 ${isRoiModalOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       <div className="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-4">
         {/* Logo & Platform Info */}
         <div className="flex items-center gap-6">

@@ -14,7 +14,7 @@ export default function ConfigPanel({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <span className="material-symbols-outlined text-secondary text-[22px]">tune</span>
-          <h2 className="text-lg text-on-surface font-bold">2. Tham Số Trích Xuất & Metric</h2>
+          <h2 className="text-lg text-on-surface font-bold">Tham Số Trích Xuất & Metric</h2>
         </div>
         <span className="text-xs text-on-surface-variant font-medium">Pipeline Config</span>
       </div>

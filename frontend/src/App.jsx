@@ -16,6 +16,7 @@ export default function App() {
   const [activeFile, setActiveFile] = useState(null);
   const [activePreview, setActivePreview] = useState(null);
   const [cropCoords, setCropCoords] = useState(null);
+  const [isRoiModalOpen, setIsRoiModalOpen] = useState(false);
 
   const [selectedModel, setSelectedModel] = useState('vit');
   const [topK, setTopK] = useState(10);
@@ -49,6 +50,7 @@ export default function App() {
       const file = new File([blob], `${preset.id}.jpg`, { type: 'image/jpeg' });
       setActiveFile(file);
       setActivePreview(preset.image_url);
+      setIsRoiModalOpen(true);
     } catch (e) {
       console.error('Failed to load preset image:', e);
       setErrorMsg('Không thể tải ảnh mẫu này từ máy chủ.');
@@ -62,6 +64,7 @@ export default function App() {
     setActiveFile(file);
     const objectUrl = URL.createObjectURL(file);
     setActivePreview(objectUrl);
+    setIsRoiModalOpen(true);
   };
 
   const handleClearFile = () => {
@@ -70,6 +73,7 @@ export default function App() {
     setCropCoords(null);
     setSelectedPresetId(null);
     setResultsData(null);
+    setIsRoiModalOpen(false);
   };
 
   // Submit Retrieval
@@ -77,6 +81,7 @@ export default function App() {
     if (!activeFile) return;
 
     setIsLoading(true);
+    setIsRoiModalOpen(false);
     setErrorMsg(null);
 
     const formData = new FormData();
@@ -113,7 +118,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-surface font-sans text-on-surface flex flex-col">
       {/* Top Navigation */}
-      <Navbar health={health} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Navbar health={health} activeTab={activeTab} setActiveTab={setActiveTab} isRoiModalOpen={isRoiModalOpen} />
 
       {/* Main Container */}
       <main className="w-full pt-24 pb-16 flex-1">
@@ -163,15 +168,19 @@ export default function App() {
                 )}
               </section>
 
-              {/* SECTION: Dual-Pane Workstation */}
+              {/* SECTION: Workstation */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                {/* Left Column: Dropzone, Presets, Config (5 cols) */}
-                <div className="lg:col-span-5 space-y-6">
+                {/* Left Column: Dropzone & Presets (7 cols) */}
+                <div className="lg:col-span-7 space-y-6">
                   <Dropzone
                     onFileSelected={handleFileSelected}
                     activeFile={activeFile}
                     activePreview={activePreview}
                     onClearFile={handleClearFile}
+                    onOpenRoiModal={() => setIsRoiModalOpen(true)}
+                    onSubmitRetrieval={handleSubmitRetrieval}
+                    isLoading={isLoading}
+                    cropCoords={cropCoords}
                   />
 
                   <PresetsBar
@@ -179,7 +188,10 @@ export default function App() {
                     onSelectPreset={handleSelectPreset}
                     selectedPresetId={selectedPresetId}
                   />
+                </div>
 
+                {/* Right Column: Hyperparameters & Configuration (5 cols) */}
+                <div className="lg:col-span-5 space-y-6">
                   <ConfigPanel
                     selectedModel={selectedModel}
                     setSelectedModel={setSelectedModel}
@@ -189,18 +201,18 @@ export default function App() {
                     setMetric={setMetric}
                   />
                 </div>
-
-                {/* Right Column: ROI Cropping & Execution Workspace (7 cols) */}
-                <div className="lg:col-span-7">
-                  <RoiCropper
-                    imageSrc={activePreview}
-                    onCropChange={setCropCoords}
-                    onSubmit={handleSubmitRetrieval}
-                    isLoading={isLoading}
-                    selectedModel={selectedModel}
-                  />
-                </div>
               </div>
+
+              {/* Pop-up Modal: Phần 3 - Phân Vùng Quan Tâm (Canine ROI Workspace) */}
+              <RoiCropper
+                isOpen={isRoiModalOpen}
+                onClose={() => setIsRoiModalOpen(false)}
+                imageSrc={activePreview}
+                onCropChange={setCropCoords}
+                onSubmit={handleSubmitRetrieval}
+                isLoading={isLoading}
+                selectedModel={selectedModel}
+              />
 
               {/* SECTION: Inference Results Dashboard */}
               <ResultsDashboard

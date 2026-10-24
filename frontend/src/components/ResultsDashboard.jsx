@@ -225,7 +225,7 @@ export default function ResultsDashboard({ resultsData, queryPreviewUrl }) {
 
       {/* Comparison Modal */}
       {selectedComparison && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[9999] w-screen h-screen bg-black/75 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto animate-fadeIn">
           <div className="bg-surface-container-lowest rounded-3xl max-w-3xl w-full p-6 shadow-2xl space-y-5 animate-scaleIn border border-surface-container-high">
             <div className="flex items-center justify-between pb-3 border-b border-surface-container-high">
               <div className="flex items-center gap-2">
