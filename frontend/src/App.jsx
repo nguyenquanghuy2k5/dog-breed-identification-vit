@@ -7,6 +7,7 @@ import ConfigPanel from './components/ConfigPanel';
 import RoiCropper from './components/RoiCropper';
 import ResultsDashboard from './components/ResultsDashboard';
 import HistoryView from './components/HistoryView';
+import ModelHub from './components/ModelHub';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('cbir');
@@ -325,58 +326,7 @@ export default function App() {
 
           {/* Model Hub Tab */}
           {activeTab === 'model-hub' && (
-            <div className="space-y-6 max-w-4xl mx-auto py-6">
-              <div className="p-8 rounded-3xl bg-surface-container-lowest border border-surface-container-high/60 space-y-4 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary">
-                    <span className="material-symbols-outlined text-[28px]">neurology</span>
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-on-surface">Mô Hình Thị Giác Máy Học (Deep Learning Backbones)</h2>
-                    <p className="text-xs text-on-surface-variant">Chi tiết kiến trúc mạng trích xuất đặc trưng và chỉ mục FAISS</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                  <div className="p-5 rounded-2xl bg-surface-container-low border border-primary/30 space-y-3">
-                    <div className="flex justify-between items-center">
-                      <h3 className="font-bold text-base text-primary">Vision Transformer (ViT-B/16)</h3>
-                      <span className="px-2 py-0.5 rounded-full bg-primary-fixed text-primary text-[10px] font-bold">Khuyên Dùng</span>
-                    </div>
-                    <p className="text-xs text-on-surface-variant leading-relaxed">
-                      Sử dụng cơ chế Self-Attention đa đầu (Multi-Head Self-Attention) phân chia ảnh thành các patch 16x16. Nắm bắt các đặc trưng hình thái tinh vi (đôi mắt, sống mũi, vân lông) của từng giống chó.
-                    </p>
-                    <div className="text-[11px] font-mono space-y-1 text-on-surface-variant pt-2 border-t border-surface-container-high">
-                      <p>• Embedding Dimension: <strong>768 dimensions</strong></p>
-                      <p>• Pretrained weights: <strong>ViT Base Patch 16 (Fine-Tuned)</strong></p>
-                      <p>• Vector Normalization: <strong>L2-Normalized (Unit sphere)</strong></p>
-                    </div>
-                  </div>
-
-                  <div className="p-5 rounded-2xl bg-surface-container-low border border-secondary/30 space-y-3">
-                    <div className="flex justify-between items-center">
-                      <h3 className="font-bold text-base text-secondary">ResNet-50 (Baseline)</h3>
-                      <span className="px-2 py-0.5 rounded-full bg-secondary-fixed text-secondary text-[10px] font-bold">Cổ Điển</span>
-                    </div>
-                    <p className="text-xs text-on-surface-variant leading-relaxed">
-                      Mạng nơ-ron tích chập 50 lớp với kết nối phần dư (Residual Skip Connections). Tốc độ tính toán nhanh, hội tụ tốt, trích xuất đặc trưng qua lớp Global Average Pooling.
-                    </p>
-                    <div className="text-[11px] font-mono space-y-1 text-on-surface-variant pt-2 border-t border-surface-container-high">
-                      <p>• Embedding Dimension: <strong>2048 dimensions</strong></p>
-                      <p>• Feature Layer: <strong>Pooler Output (Conv5_x)</strong></p>
-                      <p>• Margin Adjustment: <strong>Distribution Calibrated</strong></p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-surface-container text-xs text-on-surface-variant space-y-2 mt-4">
-                  <h4 className="font-bold text-on-surface">Chỉ Mục Tìm Kiếm FAISS (Facebook AI Similarity Search)</h4>
-                  <p>
-                    Hệ thống lưu trữ 8.580 vector đặc trưng tương ứng với 120 giống chó quốc tế trong chỉ mục <code>IndexFlatIP</code> (Inner Product tương đương Cosine Similarity với vector đã chuẩn hóa L2). Thời gian truy xuất chỉ từ <strong>2ms đến 8ms</strong>.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <ModelHub health={health} />
           )}
 
         </div>
