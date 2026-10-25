@@ -23,51 +23,39 @@ export default function Navbar({ health, activeTab, setActiveTab, isRoiModalOpen
         <nav className="hidden lg:flex items-center gap-1">
           <button 
             onClick={() => setActiveTab('cbir')}
-            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-2 cursor-pointer ${
+            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center cursor-pointer ${
               activeTab === 'cbir' 
                 ? 'bg-primary-container text-on-primary-fixed shadow-sm' 
                 : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
             }`}
           >
-            <span className="material-symbols-outlined text-[18px]">image_search</span>
-            Tra cứu ảnh / CBIR
+            Tra cứu ảnh
           </button>
 
           <button 
             onClick={() => setActiveTab('history')}
-            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-2 cursor-pointer ${
+            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center cursor-pointer ${
               activeTab === 'history' 
                 ? 'bg-primary-container text-on-primary-fixed shadow-sm' 
                 : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
             }`}
           >
-            <span className="material-symbols-outlined text-[18px]">history</span>
             Lịch sử tra cứu
           </button>
           
           <button 
             onClick={() => setActiveTab('model-hub')}
-            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-2 cursor-pointer ${
+            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center cursor-pointer ${
               activeTab === 'model-hub' 
                 ? 'bg-primary-container text-on-primary-fixed shadow-sm' 
                 : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
             }`}
           >
-            <span className="material-symbols-outlined text-[18px]">neurology</span>
             Mô hình ViT & ResNet
           </button>
         </nav>
 
         {/* User / Quick Actions */}
-        <div className="flex items-center gap-3">
-          <div className="text-right hidden sm:block">
-            <p className="text-xs font-bold text-on-surface">Stanford Dogs</p>
-            <p className="text-[11px] text-on-surface-variant">120 Giống Quốc Tế</p>
-          </div>
-          <div className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shadow-sm border border-surface-container-highest">
-            <span className="material-symbols-outlined text-[20px]">verified</span>
-          </div>
-        </div>
       </div>
     </header>
   );

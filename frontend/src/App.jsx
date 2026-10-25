@@ -232,22 +232,6 @@ export default function App() {
                       </span>
                     </h1>
                   </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (presets.length > 0) {
-                          const rand = presets[Math.floor(Math.random() * presets.length)];
-                          handleSelectPreset(rand);
-                        }
-                      }}
-                      className="px-4 py-2.5 rounded-2xl bg-surface-container-high hover:bg-surface-container text-secondary text-xs font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
-                    >
-                      <span className="material-symbols-outlined text-[18px]">shuffle</span>
-                      <span>Ngẫu nhiên mẫu thử</span>
-                    </button>
-                  </div>
                 </div>
 
                 {/* Error Banner */}

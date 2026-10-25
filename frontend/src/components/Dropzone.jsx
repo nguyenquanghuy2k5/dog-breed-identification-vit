@@ -49,9 +49,6 @@ export default function Dropzone({
           <span className="material-symbols-outlined text-primary text-[22px]">upload_file</span>
           <h2 className="text-lg text-on-surface font-bold">Tải lên ảnh chụp truy vấn</h2>
         </div>
-        <span className="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-semibold">
-          Query Input
-        </span>
       </div>
 
       {/* Dropzone Container */}

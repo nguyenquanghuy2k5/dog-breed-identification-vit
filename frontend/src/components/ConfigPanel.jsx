@@ -16,7 +16,6 @@ export default function ConfigPanel({
           <span className="material-symbols-outlined text-secondary text-[22px]">tune</span>
           <h2 className="text-lg text-on-surface font-bold">Tham Số Trích Xuất & Metric</h2>
         </div>
-        <span className="text-xs text-on-surface-variant font-medium">Pipeline Config</span>
       </div>
 
       <div className="space-y-4">
@@ -24,7 +23,6 @@ export default function ConfigPanel({
         <div className="space-y-1.5">
           <label className="text-xs text-on-surface font-bold flex items-center justify-between">
             <span>Không gian tra cứu (Search Space):</span>
-            <span className="text-primary font-bold">Stanford Dogs (8.580 Vectors)</span>
           </label>
           <div className="relative">
             <select 
