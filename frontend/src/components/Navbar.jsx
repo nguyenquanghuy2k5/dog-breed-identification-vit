@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Navbar({ health, activeTab, setActiveTab, isRoiModalOpen }) {
+export default function Navbar({ health, activeTab, setActiveTab, isRoiModalOpen, historyCount = 0 }) {
   return (
     <header className={`fixed top-0 w-full z-40 bg-surface/90 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(21,28,39,0.04)] transition-opacity duration-200 ${isRoiModalOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       <div className="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-4">
@@ -23,7 +23,7 @@ export default function Navbar({ health, activeTab, setActiveTab, isRoiModalOpen
         <nav className="hidden lg:flex items-center gap-1">
           <button 
             onClick={() => setActiveTab('cbir')}
-            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-2 ${
+            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-2 cursor-pointer ${
               activeTab === 'cbir' 
                 ? 'bg-primary-container text-on-primary-fixed shadow-sm' 
                 : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
@@ -32,10 +32,22 @@ export default function Navbar({ health, activeTab, setActiveTab, isRoiModalOpen
             <span className="material-symbols-outlined text-[18px]">image_search</span>
             Tra cứu ảnh / CBIR
           </button>
+
+          <button 
+            onClick={() => setActiveTab('history')}
+            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-2 cursor-pointer ${
+              activeTab === 'history' 
+                ? 'bg-primary-container text-on-primary-fixed shadow-sm' 
+                : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
+            }`}
+          >
+            <span className="material-symbols-outlined text-[18px]">history</span>
+            Lịch sử tra cứu
+          </button>
           
           <button 
             onClick={() => setActiveTab('model-hub')}
-            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-2 ${
+            className={`text-sm px-4 py-2 rounded-xl transition-all font-semibold flex items-center gap-2 cursor-pointer ${
               activeTab === 'model-hub' 
                 ? 'bg-primary-container text-on-primary-fixed shadow-sm' 
                 : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
@@ -44,16 +56,6 @@ export default function Navbar({ health, activeTab, setActiveTab, isRoiModalOpen
             <span className="material-symbols-outlined text-[18px]">neurology</span>
             Mô hình ViT & ResNet
           </button>
-
-          <a 
-            href="/docs" 
-            target="_blank" 
-            rel="noreferrer"
-            className="text-sm px-4 py-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all font-semibold flex items-center gap-1.5"
-          >
-            <span className="material-symbols-outlined text-[18px]">api</span>
-            FastAPI Docs
-          </a>
         </nav>
 
         {/* User / Quick Actions */}

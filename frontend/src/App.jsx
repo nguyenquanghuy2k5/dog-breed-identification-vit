@@ -6,6 +6,7 @@ import Dropzone from './components/Dropzone';
 import ConfigPanel from './components/ConfigPanel';
 import RoiCropper from './components/RoiCropper';
 import ResultsDashboard from './components/ResultsDashboard';
+import HistoryView from './components/HistoryView';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('cbir');
@@ -26,6 +27,48 @@ export default function App() {
   const [resultsData, setResultsData] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
+  // Search History State (persisted in localStorage)
+  const [history, setHistory] = useState(() => {
+    try {
+      const saved = localStorage.getItem('breed_lens_history');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      console.warn('Error reading history from localStorage:', e);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('breed_lens_history', JSON.stringify(history));
+    } catch (e) {
+      console.warn('Could not save history to localStorage:', e);
+    }
+  }, [history]);
+
+  // Helper to create persistent thumbnail for history
+  const createThumbnail = (imageSource, maxWidth = 160) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ratio = img.height / img.width;
+        canvas.width = maxWidth;
+        canvas.height = Math.round(maxWidth * ratio);
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        try {
+          resolve(canvas.toDataURL('image/jpeg', 0.8));
+        } catch {
+          resolve(imageSource);
+        }
+      };
+      img.onerror = () => resolve(imageSource);
+      img.src = imageSource;
+    });
+  };
+
   // Initialize
   useEffect(() => {
     // 1. Fetch Health
@@ -44,7 +87,6 @@ export default function App() {
     setSelectedPresetId(preset.id);
     setErrorMsg(null);
     try {
-      // Fetch preset image as blob
       const resp = await fetch(preset.image_url);
       const blob = await resp.blob();
       const file = new File([blob], `${preset.id}.jpg`, { type: 'image/jpeg' });
@@ -102,6 +144,31 @@ export default function App() {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setResultsData(response.data);
+
+      // Save to History
+      try {
+        const thumb = await createThumbnail(activePreview);
+        const newEntry = {
+          id: Date.now().toString(),
+          formattedTime: new Date().toLocaleString('vi-VN', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          }),
+          queryPreviewUrl: thumb,
+          model: selectedModel,
+          topMatch: response.data.top_match,
+          metrics: response.data.metrics,
+          fullResults: response.data,
+          cropCoords: cropCoords,
+        };
+        setHistory(prev => [newEntry, ...prev.slice(0, 49)]); // keep up to 50 entries
+      } catch (e) {
+        console.warn('Failed to record history entry:', e);
+      }
+
       // Smooth scroll to results
       setTimeout(() => {
         document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -115,16 +182,43 @@ export default function App() {
     }
   };
 
+  // History action handlers
+  const handleSelectHistory = (item) => {
+    setActivePreview(item.queryPreviewUrl);
+    setSelectedModel(item.model);
+    setResultsData(item.fullResults);
+    setActiveTab('cbir');
+    setTimeout(() => {
+      document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  const handleDeleteHistoryItem = (id) => {
+    setHistory(prev => prev.filter(item => item.id !== id));
+  };
+
+  const handleClearHistory = () => {
+    if (window.confirm('Bạn có chắc chắn muốn xóa toàn bộ lịch sử tra cứu không?')) {
+      setHistory([]);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-surface font-sans text-on-surface flex flex-col">
       {/* Top Navigation */}
-      <Navbar health={health} activeTab={activeTab} setActiveTab={setActiveTab} isRoiModalOpen={isRoiModalOpen} />
+      <Navbar 
+        health={health} 
+        activeTab={activeTab} 
+        setActiveTab={setActiveTab} 
+        isRoiModalOpen={isRoiModalOpen}
+        historyCount={history.length}
+      />
 
       {/* Main Container */}
       <main className="w-full pt-24 pb-16 flex-1">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-8">
           
-          {activeTab === 'cbir' ? (
+          {activeTab === 'cbir' && (
             <>
               {/* SECTION: Editorial Hero & Header */}
               <section className="space-y-4 pt-2">
@@ -151,7 +245,7 @@ export default function App() {
                           handleSelectPreset(rand);
                         }
                       }}
-                      className="px-4 py-2.5 rounded-2xl bg-surface-container-high hover:bg-surface-container text-secondary text-xs font-bold transition-all shadow-sm flex items-center gap-2"
+                      className="px-4 py-2.5 rounded-2xl bg-surface-container-high hover:bg-surface-container text-secondary text-xs font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
                     >
                       <span className="material-symbols-outlined text-[18px]">shuffle</span>
                       <span>Ngẫu nhiên mẫu thử</span>
@@ -220,8 +314,21 @@ export default function App() {
                 queryPreviewUrl={activePreview}
               />
             </>
-          ) : (
-            /* Model Hub Tab */
+          )}
+
+          {/* History Tab */}
+          {activeTab === 'history' && (
+            <HistoryView
+              history={history}
+              onSelectHistory={handleSelectHistory}
+              onDeleteHistoryItem={handleDeleteHistoryItem}
+              onClearHistory={handleClearHistory}
+              onStartNewSearch={() => setActiveTab('cbir')}
+            />
+          )}
+
+          {/* Model Hub Tab */}
+          {activeTab === 'model-hub' && (
             <div className="space-y-6 max-w-4xl mx-auto py-6">
               <div className="p-8 rounded-3xl bg-surface-container-lowest border border-surface-container-high/60 space-y-4 shadow-sm">
                 <div className="flex items-center gap-3">
@@ -281,4 +388,3 @@ export default function App() {
     </div>
   );
 }
-
