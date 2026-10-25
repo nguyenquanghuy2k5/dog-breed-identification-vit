@@ -230,10 +230,6 @@ export default function App() {
                         Nhận Dạng Giống Chó Tự Động Qua Không Gian Vector
                       </span>
                     </h1>
-
-                    <p className="text-sm text-on-surface-variant leading-relaxed">
-                      Nền tảng CBIR (Content-Based Image Retrieval) kết hợp trích xuất đặc trưng Fine-Grained từ mạng <strong className="text-on-surface font-semibold">Vision Transformer ViT-B/16</strong> và <strong className="text-on-surface font-semibold">ResNet-50</strong>. Hỗ trợ khoanh vùng ROI trọng tâm để loại bỏ tạp âm môi trường và so khớp siêu phân giải theo độ tương đồng Cosine Similarity.
-                    </p>
                   </div>
 
                   <div className="flex items-center gap-2">

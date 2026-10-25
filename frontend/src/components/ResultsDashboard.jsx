@@ -13,10 +13,6 @@ export default function ResultsDashboard({ resultsData, queryPreviewUrl }) {
       <section className="bg-surface-container-lowest rounded-3xl p-6 shadow-sm border border-surface-container-high/40">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 text-xs font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              TRUY XUẤT THÀNH CÔNG • FAISS EXACT SEARCH
-            </div>
             <h2 className="text-xl font-extrabold text-on-surface">Kết Quả Nhận Dạng & Khảo Sát Không Gian Vector</h2>
           </div>
 
