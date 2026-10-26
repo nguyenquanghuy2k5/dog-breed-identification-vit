@@ -163,8 +163,7 @@ export default function Dropzone({
               </>
             ) : (
               <>
-                <span className="material-symbols-outlined text-[18px]">bolt</span>
-                <span>TIẾN HÀNH TRUY XUẤT NGAY</span>
+                <span>TIẾN HÀNH TRUY XUẤT</span>
               </>
             )}
           </button>

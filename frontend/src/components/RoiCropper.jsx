@@ -246,8 +246,7 @@ export default function RoiCropper({
                 </>
               ) : (
                 <>
-                  <span className="material-symbols-outlined text-[18px]">bolt</span>
-                  <span>TIẾN HÀNH TRUY XUẤT ({selectedModel === 'vit' ? 'ViT-B/16' : 'ResNet-50'})</span>
+                  <span>TIẾN HÀNH TRUY XUẤT</span>
                 </>
               )}
             </button>
