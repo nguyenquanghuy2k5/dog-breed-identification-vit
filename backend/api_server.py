@@ -174,6 +174,9 @@ class EngineState:
     vit_index = None
     vit_paths = None
     vit_labels = None
+    resnet_index = None
+    resnet_paths = None
+    resnet_labels = None
     id2label = {}
 
 state = EngineState()
@@ -194,7 +197,7 @@ def load_models_and_databases():
             state.vit_model = ViTModel.from_pretrained(vit_path, output_hidden_states=True).to(DEVICE)
             state.vit_model.eval()
             
-            print("[*] Loading FAISS Index...")
+            print("[*] Loading ViT FAISS Index...")
             state.vit_index = faiss.read_index(vit_index_path)
             
             df = pd.read_csv(vit_csv_path)
@@ -207,8 +210,11 @@ def load_models_and_databases():
         except Exception as e:
             print(f"[!] Error loading ViT model/index: {e}")
 
-    # 2. Check ResNet Model
+    # 2. Check ResNet Model & Index
     resnet_path = os.path.join(MODELS_DIR, "model_dogs_resnet50_baseline")
+    resnet_index_path = os.path.join(DATABASES_DIR, "model_dogs_resnet50_baseline_faiss.index")
+    resnet_csv_path = os.path.join(DATABASES_DIR, "model_dogs_resnet50_baseline_info.csv")
+
     if os.path.exists(resnet_path):
         try:
             print("[*] Loading ResNet-50 Baseline...")
@@ -220,7 +226,16 @@ def load_models_and_databases():
             ])
             state.resnet_model = ResNetModel.from_pretrained(resnet_path, output_hidden_states=True).to(DEVICE)
             state.resnet_model.eval()
-            print("[OK] ResNet-50 Engine Ready!")
+            
+            if os.path.exists(resnet_index_path) and os.path.exists(resnet_csv_path):
+                print("[*] Loading ResNet-50 FAISS Index...")
+                state.resnet_index = faiss.read_index(resnet_index_path)
+                df_res = pd.read_csv(resnet_csv_path)
+                state.resnet_paths = df_res['filepath'].values
+                state.resnet_labels = df_res['class_id'].values if 'class_id' in df_res.columns else np.zeros(len(df_res), dtype=int)
+                print(f"[OK] ResNet-50 Engine Ready! Total Vectors: {state.resnet_index.ntotal}")
+            else:
+                print("[OK] ResNet-50 Model Loaded (Chưa tìm thấy file FAISS index)")
         except Exception as e:
             print(f"[!] Error loading ResNet: {e}")
 
@@ -268,8 +283,8 @@ def health_check():
         "cuda_available": torch.cuda.is_available(),
         "total_vectors": state.vit_index.ntotal if state.vit_index else 0,
         "models": {
-            "vit": state.vit_model is not None,
-            "resnet": state.resnet_model is not None
+            "vit": state.vit_model is not None and state.vit_index is not None,
+            "resnet": state.resnet_model is not None and state.resnet_index is not None
         }
     }
 
@@ -284,7 +299,7 @@ def get_models():
             "description": "Mô hình thị giác máy học phân giải cao, tối ưu cho nhận dạng chi tiết các giống loài."
         }
     ]
-    if state.resnet_model is not None:
+    if state.resnet_model is not None and state.resnet_index is not None:
         models.append({
             "id": "resnet",
             "name": "ResNet-50 (Baseline)",
@@ -395,23 +410,33 @@ async def retrieve_similar_images(
     else:
         cropped_image = image
 
-    # 3. Feature Extraction
+    # 3. Feature Extraction & Dynamic Index Selection
     t_feat_start = time.perf_counter()
-    if model_name == "resnet" and state.resnet_model is not None:
+    if model_name == "resnet":
+        if state.resnet_model is None or state.resnet_index is None:
+            raise HTTPException(status_code=503, detail="ResNet-50 Engine hoặc FAISS Index chưa sẵn sàng")
         query_vector = extract_resnet_vector(cropped_image)
         dim = 2048
         arch = "resnet"
+        current_index = state.resnet_index
+        current_paths = state.resnet_paths
+        current_labels = state.resnet_labels
     else:
+        if state.vit_model is None or state.vit_index is None:
+            raise HTTPException(status_code=503, detail="ViT-B/16 Engine hoặc FAISS Index chưa sẵn sàng")
         query_vector = extract_vit_vector(cropped_image)
         dim = 768
         arch = "vit"
+        current_index = state.vit_index
+        current_paths = state.vit_paths
+        current_labels = state.vit_labels
     t_feat_end = time.perf_counter()
     extract_time_ms = round((t_feat_end - t_feat_start) * 1000, 2)
 
     # 4. FAISS Search
     t_search_start = time.perf_counter()
-    safe_k = max(1, min(top_k, 50, state.vit_index.ntotal))
-    distances, indices = state.vit_index.search(query_vector, safe_k)
+    safe_k = max(1, min(top_k, 50, current_index.ntotal))
+    distances, indices = current_index.search(query_vector, safe_k)
     t_search_end = time.perf_counter()
     faiss_time_ms = round((t_search_end - t_search_start) * 1000, 2)
 
@@ -422,15 +447,15 @@ async def retrieve_similar_images(
     top_match = None
 
     for rank, (dist, idx) in enumerate(zip(distances[0], indices[0]), start=1):
-        rel_path = state.vit_paths[idx]
-        class_id = int(state.vit_labels[idx])
+        rel_path = current_paths[idx]
+        class_id = int(current_labels[idx])
         
         # Determine breed name
         folder_name = os.path.basename(os.path.dirname(rel_path))
         raw_breed = folder_name.split("-")[-1] if "-" in folder_name else folder_name
         breed_display = get_breed_display_name(raw_breed)
         
-        sim_percent = round(normalize_similarity(float(dist), state.vit_index.metric_type, arch), 1)
+        sim_percent = round(normalize_similarity(float(dist), current_index.metric_type, arch), 1)
         
         if sim_percent >= 80:
             border_class = "border-emerald-500"
@@ -481,7 +506,7 @@ async def retrieve_similar_images(
             "faiss_time_ms": faiss_time_ms,
             "embedding_dim": dim,
             "model_architecture": "Vision Transformer (ViT-B/16)" if arch == "vit" else "ResNet-50",
-            "search_space_count": state.vit_index.ntotal,
+            "search_space_count": current_index.ntotal,
             "metric_type": "Cosine Similarity (FlatIP Exact)"
         },
         "query_meta": {
