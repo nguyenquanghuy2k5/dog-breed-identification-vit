@@ -214,7 +214,49 @@ pip install -r requirements.txt
 
 ---
 
-### Bước 3 — Cài đặt & Xây dựng Giao diện Frontend
+### Bước 3 — Tải và Chuẩn Bị Dataset Stanford Dogs Từ Kaggle
+
+Hệ thống sử dụng bộ dữ liệu **Stanford Dogs Dataset** để phục vụ ảnh tĩnh (`/static/stanford/...`), trích xuất vector đặc trưng và huấn luyện mô hình.
+
+Bạn có thể tải dataset từ Kaggle bằng một trong hai cách:
+
+#### Cách 1: Tải trực tiếp bằng Kaggle CLI (Khuyên dùng)
+
+Đảm bảo bạn đã cài đặt thư viện `kaggle` và cấu hình file `kaggle.json`:
+
+```bash
+# Tải bộ dữ liệu Stanford Dogs từ Kaggle
+kaggle datasets download -d jessicali9530/stanford-dogs-dataset
+
+# Giải nén vào thư mục Stanford_dogs của dự án
+# Trên Windows PowerShell:
+Expand-Archive -Path stanford-dogs-dataset.zip -DestinationPath Stanford_dogs -Force
+```
+
+#### Cách 2: Tải thủ công từ giao diện Web Kaggle
+
+1. Truy cập đường dẫn: https://www.kaggle.com/datasets/jessicali9530/stanford-dogs-dataset
+2. Bấm nút **Download** (file zip khoảng ~750 MB).
+3. Giải nén toàn bộ tệp vào thư mục `Stanford_dogs/` tại thư mục gốc của dự án.
+
+#### Kiểm tra cấu trúc thư mục Stanford_dogs sau khi giải nén
+
+Để mã nguồn (`backend/api_server.py`, `build_database.py`, `train_dogs.py`) nhận diện chính xác, cấu trúc thư mục cần đảm bảo như sau:
+
+```text
+Stanford_dogs/
+├── Images/ (hoặc images/Images/)   # Chứa 120 thư mục giống chó (vd: n02085620-Chihuahua, ...)
+├── Annotation/ (hoặc annotations/)# Chứa các file XML Bounding Box tương ứng
+├── train_list.mat                 # Danh sách tập huấn luyện (12.000 ảnh)
+├── test_list.mat                  # Danh sách tập kiểm thử (8.580 ảnh)
+└── file_list.mat                  # Danh sách toàn bộ 20.580 ảnh
+```
+
+> **Ghi chú về file .mat**: Dataset tải từ Kaggle đã tích hợp sẵn 3 file danh sách phân chia `train_list.mat`, `test_list.mat`, `file_list.mat`. Mã nguồn đã được cấu hình tự động tương thích với cả hai dạng tên thư mục chữ hoa hoặc chữ thường (`Images` hoặc `images/Images`, `Annotation` hoặc `annotations/Annotation`).
+
+---
+
+### Bước 4 — Cài đặt & Xây dựng Giao diện Frontend
 
 Thư mục `frontend/dist` đã được biên dịch sẵn trong dự án. Nếu muốn cập nhật giao diện hoặc chỉnh sửa mã nguồn React:
 
@@ -227,7 +269,7 @@ cd ..
 
 ---
 
-### Bước 4 — Khởi Chạy Ứng Dụng
+### Bước 5 — Khởi Chạy Ứng Dụng
 
 ```bash
 python run_app.py
